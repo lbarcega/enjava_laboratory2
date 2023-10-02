@@ -1,6 +1,7 @@
 ﻿using MyWebApplication.Models.DB;
 using MyWebApplication.Models.ViewModel;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace MyWebApplication.Models.EntityManager
@@ -135,6 +136,26 @@ namespace MyWebApplication.Models.EntityManager
                 return db.SystemUsers.Where(u => u.LoginName.Equals(loginName)).Any();
             }
         }
+        public void RegUserAccount(RegUserModel user)
+        {
+            using (MyDBContext db = new MyDBContext())
+            {
+                //Add checking here if login exists
 
+                RegUsers newRegUser = new RegUsers
+                {
+                    Fullname = user.Fullname,
+                    Username = user.Username,
+                    Email = user.Email,
+                    Password = user.Password, //this has to be encrypted
+                    Birthdate = user.Birthdate,
+                    Created_at = DateTime.Now,
+
+                };
+
+                db.RegUsers.Add(newRegUser);
+                db.SaveChanges();
+            }
+        }
     }
 }
