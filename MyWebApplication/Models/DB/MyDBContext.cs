@@ -109,7 +109,7 @@ namespace MyWebApplication.Models.DB
 
             modelBuilder.Entity<RegUsers>(entity =>
             {
-                entity.ToTable("sample");
+                entity.ToTable("VervoyageUsers");
 
                 entity.Property(e => e.user_id)
                 .HasColumnName("user_id")
