@@ -20,6 +20,11 @@ namespace MyWebApplication.Controllers
             return View(user);
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SignUp(UserModel user)
         {
@@ -52,6 +57,18 @@ namespace MyWebApplication.Controllers
             return RedirectToAction("LoginNameNotFound");
         }
 
+        [HttpPost]
+        public ActionResult Register(RegUserModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager um = new UserManager();
+                um.RegUserAccount(user);
+                // FormsAuthentication.SetAuthCookie(user.FirstName, false);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
 
     }

@@ -16,7 +16,8 @@ namespace MyWebApplication.Models.DB
 
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<SystemUsers> SystemUsers { get; set; }
-        public virtual DbSet<VerUsers> VerUsers { get; set; }
+        public virtual DbSet<RegUsers> RegUsers { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -111,6 +112,45 @@ namespace MyWebApplication.Models.DB
                   .HasColumnName("RowModifiedDateTime")
                   .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
+
+            });
+
+            modelBuilder.Entity<RegUsers>(entity =>
+            {
+                entity.ToTable("VervoyageUsers");
+
+                entity.Property(e => e.user_id)
+                .HasColumnName("user_id")
+                .HasColumnType("int");
+
+                entity.Property(e => e.Fullname)
+                .HasColumnName("Fullname")
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+                entity.Property(e => e.Username)
+                .HasColumnName("Username")
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+                entity.Property(e => e.Email)
+                  .HasColumnName("Email")
+                  .HasMaxLength(200)
+                  .IsUnicode(false);
+
+                entity.Property(e => e.Password)
+                  .HasColumnName("Password")
+                  .HasMaxLength(200)
+                  .IsUnicode(false);
+
+                entity.Property(e => e.Birthdate)
+                  .HasColumnName("Birthdate")
+                  .HasMaxLength(10)
+                  .IsUnicode(false);
+
+                entity.Property(e => e.Created_at)
+                  .HasColumnName("Created_at")
+                  .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             });
 
