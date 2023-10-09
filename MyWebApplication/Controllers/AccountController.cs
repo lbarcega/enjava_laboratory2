@@ -11,6 +11,7 @@ namespace MyWebApplication.Controllers
             return View();
         }
 
+
         public ActionResult Users()
         {
             UserManager um = new UserManager();
@@ -22,6 +23,7 @@ namespace MyWebApplication.Controllers
         [HttpPost]
         public ActionResult SignUp(UserModel user)
         {
+            ModelState.Remove("AccountImage");
             if (ModelState.IsValid)
             {
                 UserManager um = new UserManager();
@@ -49,6 +51,8 @@ namespace MyWebApplication.Controllers
             // Handle the case when the login name doesn't exist, e.g., return a relevant error view.
             return RedirectToAction("LoginNameNotFound");
         }
+
+
 
     }
 }

@@ -16,6 +16,7 @@ namespace MyWebApplication.Models.DB
 
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<SystemUsers> SystemUsers { get; set; }
+        public virtual DbSet<VerUsers> VerUsers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -73,6 +74,12 @@ namespace MyWebApplication.Models.DB
                   .HasColumnName("RowModifiedDateTime")
                   .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
+                entity.Property(e => e.AccountImage)
+                 .HasColumnName("AccountImage")
+                 .HasMaxLength(8000)
+                 .IsUnicode(false);
+
+
             });
 
             modelBuilder.Entity<SystemUsers>(entity =>
@@ -103,6 +110,7 @@ namespace MyWebApplication.Models.DB
                 entity.Property(e => e.ModifiedDateTime)
                   .HasColumnName("RowModifiedDateTime")
                   .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
 
             });
 
