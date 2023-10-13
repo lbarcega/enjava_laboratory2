@@ -2,7 +2,7 @@
 
 namespace MyWebApplication.Models.DB
 {
-    public class RegUsers
+    public class VerUsers
     {
         [Key]
         public int user_id { get; set; }

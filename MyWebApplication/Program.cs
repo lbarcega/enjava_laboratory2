@@ -26,6 +26,11 @@ app.MapControllerRoute(
     defaults: new { controller = "Account" }
     );
 
+app.MapControllerRoute(
+    name: "Vervoyage",
+    pattern: "Vervoyage/{action=Index}/{id?}", 
+    defaults: new { controller = "Vervoyage" }
+    );
 
 app.MapControllerRoute(
     name: "default",

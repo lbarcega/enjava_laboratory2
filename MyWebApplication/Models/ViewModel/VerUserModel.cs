@@ -2,7 +2,7 @@
 
 namespace MyWebApplication.Models.ViewModel
 {
-    public class RegUserModel
+    public class VerUserModel
     {
         [Key]
         public int user_id { get; set; }
@@ -22,7 +22,11 @@ namespace MyWebApplication.Models.ViewModel
         public string Birthdate { get; set; }
         [Required(ErrorMessage = "*")]
         [Display(Name = "Birthdate")]
-        public int Created_at { get; set; }
+        public DateTime Created_at { get; set; }
+    }
+    public class VerUsersModel
+    {
+        public List<VerUserModel> VerUsers { get; set; }
     }
 
 }

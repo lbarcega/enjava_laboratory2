@@ -16,7 +16,7 @@ namespace MyWebApplication.Models.DB
 
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<SystemUsers> SystemUsers { get; set; }
-        public virtual DbSet<RegUsers> RegUsers { get; set; }
+        public virtual DbSet<VerUsers> VerUsers { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -115,7 +115,7 @@ namespace MyWebApplication.Models.DB
 
             });
 
-            modelBuilder.Entity<RegUsers>(entity =>
+            modelBuilder.Entity<VerUsers>(entity =>
             {
                 entity.ToTable("VervoyageUsers");
 

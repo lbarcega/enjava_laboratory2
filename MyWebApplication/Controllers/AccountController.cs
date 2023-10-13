@@ -20,10 +20,6 @@ namespace MyWebApplication.Controllers
             return View(user);
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
 
         [HttpPost]
         public ActionResult SignUp(UserModel user)
@@ -55,19 +51,6 @@ namespace MyWebApplication.Controllers
             }
             // Handle the case when the login name doesn't exist, e.g., return a relevant error view.
             return RedirectToAction("LoginNameNotFound");
-        }
-
-        [HttpPost]
-        public ActionResult Register(RegUserModel user)
-        {
-            if (ModelState.IsValid)
-            {
-                UserManager um = new UserManager();
-                um.RegUserAccount(user);
-                // FormsAuthentication.SetAuthCookie(user.FirstName, false);
-                return RedirectToAction("Index");
-            }
-            return View();
         }
 
 
