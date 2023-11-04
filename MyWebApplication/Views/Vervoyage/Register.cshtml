@@ -14,8 +14,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class =
-        "control-label col-md-2" })
+            <label>Fullname</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new {
             @class = "form-control" } })
@@ -24,8 +23,7 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class =
-        "control-label col-md-2" })
+            <label>Username</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new {
             @class = "form-control" } })
