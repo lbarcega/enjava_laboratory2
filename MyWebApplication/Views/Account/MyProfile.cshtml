@@ -83,6 +83,13 @@
                             <option value="O">Other</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="editRole">Role:</label>
+                        <select class="form-control" id="editRole">
+                            <option value="1">Administrator</option>
+                            <option value="2">Member</option>
+                        </select>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -104,6 +111,7 @@
         var editFirstName = $("#editFirstName");
         var editLastName = $("#editLastName");
         var editGender = $("#editGender");
+        var editRole = $("#editRole");
 
         // Click event for "Edit" links
         $("#userListContainer").on("click", ".lnkEdit", function () {
@@ -112,6 +120,7 @@
             var firstName = $(this).data("firstname");
             var lastName = $(this).data("lastname");
             var gender = $(this).data("gender");
+            var role = $(this).data("role");
 
             // Populate the modal with user data
             editId.val(userId);
@@ -119,6 +128,7 @@
             editFirstName.val(firstName);
             editLastName.val(lastName);
             editGender.val(gender);
+            editRole.val(role);
 
             // Show the modal
             editModal.modal("show");
@@ -132,7 +142,8 @@
                 LoginName: editLoginName.val(),
                 FirstName: editFirstName.val(),
                 LastName: editLastName.val(),
-                Gender: editGender.val()
+                Gender: editGender.val(),
+                RoleID: editRole.val()
             };
 
             // Perform your update logic here (e.g., call an API or submit a form)
