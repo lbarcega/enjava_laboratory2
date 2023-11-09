@@ -18,7 +18,6 @@ namespace MyWebApplication.Controllers
         //public SignInManager<string> _signInManager;
         public ActionResult Login()
         {
-
             return View();
         }
 
@@ -32,12 +31,12 @@ namespace MyWebApplication.Controllers
             return View(user);
         }
 
-        [AuthorizeRoles("Member", "Admin")]
+        [AuthorizeRoles("Member","Admin")]
         public ActionResult MyProfile()
         {
-
             UserManager um = new UserManager();
-            UsersModel user = um.GetAllUsers();
+            string LoginName = User.Identity.Name;
+            UsersModel user = um.GetUser(LoginName);
 
             return View(user);
         }
@@ -93,9 +92,9 @@ namespace MyWebApplication.Controllers
                     if (ulm.Password.Equals(ulm.Password))
                     {
                         var claims = new List<Claim>
-                    {
+                        {
                         new Claim(ClaimTypes.Name, ulm.LoginName)
-                    };
+                        };
 
                         var userIdentity = new ClaimsIdentity(claims, "login");
 

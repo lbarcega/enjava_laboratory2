@@ -43,7 +43,6 @@ namespace MyWebApplication.Models.ViewModel
     public class UsersModel
     {
         public List<UserModel> Users { get; set; }
-        public List<UserModel> User { get; set; }
     }
 
     public class UserLoginModel

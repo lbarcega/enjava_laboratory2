@@ -4,6 +4,7 @@ using Microsoft.Identity.Client;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace MyWebApplication.Models.EntityManager
 {
@@ -84,6 +85,7 @@ namespace MyWebApplication.Models.EntityManager
                     existingUser.LastName = user.LastName;
                     existingUser.Gender = user.Gender;
 
+
                     UserRole userRole = db.UserRole.FirstOrDefault(ur => ur.UserID == existingUser.UserID);
 
                     if (userRole != null)
@@ -163,10 +165,9 @@ namespace MyWebApplication.Models.EntityManager
             return list;
         }
 
-        public UsersModel GetUser()
+        public UsersModel GetUser(string loginName)
         {
             UsersModel list = new UsersModel();
-
             using (MyDBContext db = new MyDBContext())
             {
                 var users = from u in db.Users
@@ -176,7 +177,8 @@ namespace MyWebApplication.Models.EntityManager
                             on u.UserID equals ur.UserID
                             join r in db.Role
                             on ur.LookUpRoleID equals r.RoleID
-                            select new { u, us, r, ur };
+                            where us.LoginName == loginName
+                select new { u, us, r, ur };
 
                 list.Users = users.Select(records => new UserModel()
                 {
